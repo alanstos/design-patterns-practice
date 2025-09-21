@@ -1,0 +1,34 @@
+@startuml
+title Composite Pattern - File System Example
+
+' --- Component ---
+interface FileSystemComponent {
+    + showDetails(indent: String)
+}
+
+' --- Leaf ---
+class File implements FileSystemComponent {
+    - name: String
+    + File(name: String)
+    + showDetails(indent: String)
+    + getName(): String
+}
+
+' --- Composite ---
+class Directory implements FileSystemComponent {
+    - name: String
+    - children: List<FileSystemComponent>
+    + Directory(name: String)
+    + addComponent(component: FileSystemComponent)
+    + removeComponent(component: FileSystemComponent)
+    + showDetails(indent: String)
+    + getName(): String
+    + getChildren(): List<FileSystemComponent>
+}
+
+' --- Relações ---
+FileSystemComponent <|.. File
+FileSystemComponent <|.. Directory
+Directory o-- FileSystemComponent : contains
+
+@enduml
