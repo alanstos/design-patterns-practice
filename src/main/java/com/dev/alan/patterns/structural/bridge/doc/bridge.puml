@@ -1,0 +1,39 @@
+@startuml
+title Bridge Pattern - Exemplo Formas e Renderers
+
+' --- Implementor ---
+interface Renderer {
+    + renderShape(shape: String): String
+}
+
+class VectorRenderer implements Renderer {
+    + renderShape(shape: String): String
+}
+
+class RasterRenderer implements Renderer {
+    + renderShape(shape: String): String
+}
+
+' --- Abstraction ---
+abstract class Shape {
+    - renderer: Renderer
+    + draw(): String
+}
+
+class Circle extends Shape {
+    + draw(): String
+}
+
+class Square extends Shape {
+    + draw(): String
+}
+
+' Relações
+Renderer <|.. VectorRenderer
+Renderer <|.. RasterRenderer
+
+Shape o-- Renderer
+Shape <|-- Circle
+Shape <|-- Square
+
+@enduml
