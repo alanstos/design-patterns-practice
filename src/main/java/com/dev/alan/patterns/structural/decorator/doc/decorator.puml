@@ -1,0 +1,46 @@
+@startuml
+title Decorator Pattern - Notificações
+
+' --- Component ---
+interface Notifier {
+    + send(message: String)
+}
+
+' --- Concrete Component ---
+class EmailNotifier implements Notifier {
+    + send(message: String)
+}
+
+' --- Base Decorator ---
+abstract class NotifierDecorator implements Notifier {
+    - wrappee: Notifier
+    + send(message: String)
+}
+
+' --- Concrete Decorators ---
+class SMSNotifier extends NotifierDecorator {
+    + send(message: String)
+}
+
+class SlackNotifier extends NotifierDecorator {
+    + send(message: String)
+}
+
+' --- Application ---
+class Application {
+    - notifier: Notifier
+    + setNotifier(notifier: Notifier)
+    + executar()
+    + executar(message: String)
+    + main(args: String[])
+}
+
+' --- Relações ---
+Notifier <|.. EmailNotifier
+Notifier <|.. NotifierDecorator
+NotifierDecorator <|-- SMSNotifier
+NotifierDecorator <|-- SlackNotifier
+
+Application --> Notifier : usa
+
+@enduml
