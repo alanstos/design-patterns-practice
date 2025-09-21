@@ -1,59 +1,38 @@
-## Factory Method
-          <<interface>>
+🔹 1. Padrões Criacionais (básicos para começar)
 
+Exercícios:
 
-          Transport
-          + deliver()
+Singleton:
+Crie uma classe de configuração que só pode ter uma instância (ex: AppConfig que guarda o idioma e tema do sistema).
 
-┌──────────┬───────────┬────────────┐
-│          │           │            │
-▼          ▼           ▼            ▼
-Car       Bike      Motorcycle
-+deliver() +deliver() +deliver()
+Factory Method:
+Implemente uma fábrica de transportes (Carro, Moto, Bicicleta). Cada transporte tem um método entregar().
 
+Abstract Factory:
+Crie uma fábrica de elementos de UI (Botão, Checkbox) que pode gerar tanto para Windows quanto para Mac.
 
-          <<abstract>>
-      TransportFactory
-      + createTransport(): Transport
+🔹 2. Padrões Estruturais
 
-┌──────────────┬───────────────────┐
-│              │                   │
-▼              ▼                   ▼
-CarTransport   BikeTransport    MotorcycleTransport
-+ createTransport()             + createTransport()
-  (return Car)                    (return Motorcycle)
+Exercícios:
 
+Adapter:
+Imagine que você tem um sistema que só entende dados em JSON, mas uma API retorna em XML. Implemente um adaptador.
 
-## Abstract factory
+Decorator:
+Crie uma classe de Café e adicione "decorators" como Leite, Chocolate, Chantilly. O preço e a descrição devem se compor dinamicamente.
 
-                <<interface>>
-                  Button
-                 + paint()
+Composite:
+Modele uma estrutura de pastas e arquivos. Pastas podem conter arquivos ou outras pastas, e todos devem implementar exibir().
 
-                <<interface>>
-                 Checkbox
-                 + paint()
+🔹 3. Padrões Comportamentais
 
-        ┌───────────┬─────────────┐
-        │           │             │
-        ▼           ▼             ▼
-WindowsButton   MacButton   (outros...)
-WindowsCheckbox MacCheckbox
+Exercícios:
 
+Observer:
+Implemente um sistema de notificações. Usuários podem se inscrever em um canal, e sempre que uma nova mensagem for postada, todos recebem.
 
-                <<interface>>
-                 UIFactory
-+ createButton(): Button
-+ createCheckbox(): Checkbox
+Strategy:
+Crie um sistema de pagamento onde a estratégia pode ser Cartão de Crédito, PayPal ou Pix.
 
-  ┌───────────────┬─────────────────┐
-  │               │                 │
-  ▼               ▼                 ▼
-  WindowsFactory     MacFactory       (outros...)
-+ createButton()   + createButton()
-+ createCheckbox() + createCheckbox()
-
-
-                Application
-         - button: Button
-         - checkbox: Checkbox
+Command:
+Modele um editor de texto com comandos de copiar, colar e desfazer.
