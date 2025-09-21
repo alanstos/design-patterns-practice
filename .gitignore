@@ -18,8 +18,8 @@ Thumbs.db
 out/
 
 # Build tools
-target/         # Maven
-build/          # Gradle
+target/
+build/
 .gradle/
 !gradle/wrapper/gradle-wrapper.jar
 
