@@ -19,6 +19,6 @@ public class Application {
 
         // Cliente não precisa saber se é arquivo ou diretório
         String details = times.showDetails();
-        System.out.println("details=" + details);
+        System.out.println(details);
     }
 }
