@@ -1,0 +1,11 @@
+package com.dev.alan.patterns.creational.abstractfatory.concrete;
+
+import com.dev.alan.patterns.creational.abstractfatory.ICheckbox;
+
+public class WindowsCheckbox implements ICheckbox {
+    @Override
+    public String paint() {
+        System.out.println("desenho check estilo win");
+        return "win";
+    }
+}

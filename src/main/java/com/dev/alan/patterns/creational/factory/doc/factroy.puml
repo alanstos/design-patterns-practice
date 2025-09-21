@@ -1,0 +1,44 @@
+@startuml
+title Factory Method Pattern - Exemplo Transportes
+
+interface Transport {
+    + deliver(): void
+}
+
+class Car implements Transport {
+    + deliver(): void
+}
+
+class Bike implements Transport {
+    + deliver(): void
+}
+
+class Motorcycle implements Transport {
+    + deliver(): void
+}
+
+abstract class TransportFactory {
+    + createTransport(): Transport
+}
+
+class CarTransport extends TransportFactory {
+    + createTransport(): Transport
+}
+
+class BikeTransport extends TransportFactory {
+    + createTransport(): Transport
+}
+
+class MotorcycleTransport extends TransportFactory {
+    + createTransport(): Transport
+}
+
+Transport <|.. Car
+Transport <|.. Bike
+Transport <|.. Motorcycle
+
+TransportFactory <|-- CarTransport
+TransportFactory <|-- BikeTransport
+TransportFactory <|-- MotorcycleTransport
+
+@enduml
