@@ -26,7 +26,7 @@ public class AbstractFactoryTest {
         Application app = new Application(factory);
 
         String ui = app.renderUI();
-        assertTrue(ui.contains("Mac"), "UI deve ser renderizada no estilo Mac");
+        assertTrue(ui.contains("mac"), "UI deve ser renderizada no estilo Mac");
     }
 
     @Test
