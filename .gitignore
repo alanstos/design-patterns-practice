@@ -1,0 +1,31 @@
+# Compilados Java
+*.class
+*.war
+*.ear
+*.jar
+
+# Logs
+*.log
+
+# Arquivos de sistema
+.DS_Store
+Thumbs.db
+
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+out/
+
+# Build tools
+target/         # Maven
+build/          # Gradle
+.gradle/
+!gradle/wrapper/gradle-wrapper.jar
+
+# Arquivos de cache
+*.swp
+*.swo
+
+# Configurações locais
+*.env

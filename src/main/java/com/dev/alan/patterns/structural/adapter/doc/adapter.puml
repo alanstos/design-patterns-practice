@@ -1,0 +1,26 @@
+@startuml
+title Adapter Pattern - Exemplo XML -> JSON
+
+interface DataProcessor {
+    + process(): String
+}
+
+class XmlService {
+    + getXml(): String
+}
+
+class XmlToJsonAdapter {
+    - xmlService: XmlService
+    + process(): String
+}
+
+class Application {
+    - dataProcessor: DataProcessor
+    + usar(): String
+}
+
+DataProcessor <|.. XmlToJsonAdapter
+XmlToJsonAdapter --> XmlService : usa
+Application --> DataProcessor : depende
+
+@enduml

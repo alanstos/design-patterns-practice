@@ -1,0 +1,5 @@
+com\dev\alan\patterns\structural\adapter\XmlToJsonAdapter.class
+com\dev\alan\patterns\creational\singleton\AppConfig.class
+com\dev\alan\patterns\structural\adapter\Application.class
+com\dev\alan\patterns\structural\adapter\IXmlService.class
+com\dev\alan\patterns\structural\adapter\XmlService.class
