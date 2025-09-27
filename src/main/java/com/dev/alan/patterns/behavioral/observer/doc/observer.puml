@@ -1,0 +1,52 @@
+@startuml
+title Observer Pattern - Sensor de Temperatura
+
+interface Observer {
+    + update(temperature: int)
+}
+
+interface Subject {
+    + attach(observer: Observer)
+    + detach(observer: Observer)
+    + notifyObservers()
+}
+
+class TemperatureSensor implements Subject {
+    - observers: List<Observer>
+    - temperature: int
+    + attach(observer: Observer)
+    + detach(observer: Observer)
+    + notifyObservers()
+    + setTemperature(temperature: int)
+}
+
+class Display implements Observer {
+    + update(temperature: int)
+}
+
+class Logger implements Observer {
+    + update(temperature: int)
+}
+
+class Alarm implements Observer {
+    - threshold: int
+    + update(temperature: int)
+}
+
+class Application {
+    + main(args: String[])
+}
+
+Observer <|.. Display
+Observer <|.. Logger
+Observer <|.. Alarm
+
+Subject <|.. TemperatureSensor
+
+TemperatureSensor --> Observer : notifica
+Application --> TemperatureSensor
+Application --> Display
+Application --> Logger
+Application --> Alarm
+
+@enduml
