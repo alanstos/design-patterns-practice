@@ -1,0 +1,46 @@
+@startuml
+title Chain of Responsibility - Suporte Técnico
+
+interface SupportHandler {
+    +setNext(handler: SupportHandler): SupportHandler
+    +handle(request: SupportRequest)
+    +process(request: SupportRequest)
+}
+
+class SupportRequest {
+    - String level
+    + getLevel(): String
+}
+
+abstract class AbstractSupportHandler implements SupportHandler {
+    - SupportHandler next
+    + setNext(handler: SupportHandler): SupportHandler
+    + handle(request: SupportRequest)
+}
+
+class Level1Support extends AbstractSupportHandler {
+    + process(request: SupportRequest)
+}
+
+class Level2Support extends AbstractSupportHandler {
+    + process(request: SupportRequest)
+}
+
+class SpecialistSupport extends AbstractSupportHandler {
+    + process(request: SupportRequest)
+}
+
+class Application {
+    + main(args: String[])
+}
+
+SupportHandler <|.. AbstractSupportHandler
+AbstractSupportHandler <|-- Level1Support
+AbstractSupportHandler <|-- Level2Support
+AbstractSupportHandler <|-- SpecialistSupport
+
+Application --> SupportRequest
+Application --> Level1Support
+Level1Support --> Level2Support
+Level2Support --> SpecialistSupport
+@enduml

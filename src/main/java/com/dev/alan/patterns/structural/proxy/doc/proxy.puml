@@ -1,0 +1,32 @@
+@startuml
+title Proxy Pattern - Video Example
+
+interface Video {
+    + play()
+}
+
+class RealVideo implements Video {
+    - filename: String
+    + RealVideo(filename: String)
+    - loadFromServer()
+    + play()
+}
+
+class ProxyVideo implements Video {
+    - filename: String
+    - realVideo: RealVideo
+    + ProxyVideo(filename: String)
+    + play()
+}
+
+class Application {
+    + main(args: String[])
+}
+
+Video <|.. RealVideo
+Video <|.. ProxyVideo
+
+Application --> Video : usa
+ProxyVideo --> RealVideo : delega
+
+@enduml

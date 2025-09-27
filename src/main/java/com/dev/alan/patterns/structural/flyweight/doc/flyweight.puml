@@ -1,0 +1,39 @@
+@startuml
+title Flyweight Pattern - Forest Example
+
+class Application {
+    + plantTree(x: int, y: int, name: String, color: String, texture: String)
+    + draw()
+}
+
+class Tree {
+    - x: int
+    - y: int
+    - type: TreeType
+    + draw()
+}
+
+interface TreeType {
+    + draw(x: int, y: int)
+}
+
+class TreeTypeImpl {
+    - name: String
+    - color: String
+    - texture: String
+    + draw(x: int, y: int)
+}
+
+class TreeFactory {
+    - treeTypes: Map<String, TreeType>
+    + getTreeType(name: String, color: String, texture: String): TreeType
+}
+
+' Relações
+Application --> Tree : cria
+Tree --> TreeType : usa
+TreeType <|.. TreeTypeImpl
+Application --> TreeFactory : consulta
+TreeFactory --> TreeTypeImpl : cria/reusa
+
+@enduml

@@ -11,12 +11,11 @@ public class FacadeTest {
 
     @Test
     public void testPlaceOrderSuccess() {
-        OrderFacade orderFacade = new OrderFacade();
-
         // Captura a saída do console
         ByteArrayOutputStream output = new ByteArrayOutputStream();
         System.setOut(new PrintStream(output));
 
+        OrderFacade orderFacade = new OrderFacade();
         orderFacade.placeOrder("123-ABC", 250.00);
 
         String consoleOutput = output.toString();

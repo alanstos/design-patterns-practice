@@ -1,0 +1,30 @@
+@startuml
+title Facade Pattern - Order Example
+
+class Application {
+    + main(args: String[])
+}
+
+class OrderFacade {
+    + placeOrder(productId: String, amount: double)
+}
+
+class InventoryService {
+    + isAvailable(productId: String): boolean
+}
+
+class PaymentService {
+    + processPayment(amount: double): boolean
+}
+
+class ShippingService {
+    + shipProduct(productId: String)
+}
+
+' Relações
+Application --> OrderFacade : usa
+OrderFacade --> InventoryService : delega
+OrderFacade --> PaymentService : delega
+OrderFacade --> ShippingService : delega
+
+@enduml

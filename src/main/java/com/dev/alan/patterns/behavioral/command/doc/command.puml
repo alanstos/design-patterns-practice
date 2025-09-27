@@ -1,0 +1,61 @@
+@startuml
+title Command Pattern - Controle Remoto
+
+interface Command {
+    + execute()
+}
+
+class Light {
+    + on()
+    + off()
+}
+
+class Fan {
+    + on()
+    + off()
+}
+
+class LightOnCommand implements Command {
+    - light: Light
+    + execute()
+}
+
+class LightOffCommand implements Command {
+    - light: Light
+    + execute()
+}
+
+class FanOnCommand implements Command {
+    - fan: Fan
+    + execute()
+}
+
+class FanOffCommand implements Command {
+    - fan: Fan
+    + execute()
+}
+
+class RemoteControl {
+    - slot: Command
+    + setCommand(command: Command)
+    + pressButton()
+}
+
+class Application {
+    + main(args: String[])
+}
+
+Command <|.. LightOnCommand
+Command <|.. LightOffCommand
+Command <|.. FanOnCommand
+Command <|.. FanOffCommand
+
+RemoteControl --> Command : usa
+LightOnCommand --> Light : chama
+LightOffCommand --> Light : chama
+FanOnCommand --> Fan : chama
+FanOffCommand --> Fan : chama
+Application --> RemoteControl
+Application --> Light
+Application --> Fan
+@enduml
