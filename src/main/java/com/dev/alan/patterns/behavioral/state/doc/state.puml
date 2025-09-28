@@ -1,0 +1,57 @@
+@startuml
+title State Pattern - Pedido de E-commerce
+
+interface OrderState {
+    + void next(OrderContext)
+    + void prev(OrderContext)
+    + String getStatus()
+}
+
+class NewOrderState {
+    + void next(OrderContext)
+    + void prev(OrderContext)
+    + String getStatus()
+}
+
+class PaidOrderState {
+    + void next(OrderContext)
+    + void prev(OrderContext)
+    + String getStatus()
+}
+
+class ShippedOrderState {
+    + void next(OrderContext)
+    + void prev(OrderContext)
+    + String getStatus()
+}
+
+class DeliveredOrderState {
+    + void next(OrderContext)
+    + void prev(OrderContext)
+    + String getStatus()
+}
+
+class OrderContext {
+    - OrderState state
+    + void setState(OrderState)
+    + void next()
+    + void prev()
+    + String getStatus()
+}
+
+OrderState <|.. NewOrderState
+OrderState <|.. PaidOrderState
+OrderState <|.. ShippedOrderState
+OrderState <|.. DeliveredOrderState
+
+OrderContext o-- OrderState
+
+NewOrderState -right-> PaidOrderState : next()
+PaidOrderState -right-> ShippedOrderState : next()
+ShippedOrderState -right-> DeliveredOrderState : next()
+
+PaidOrderState -left-> NewOrderState : prev()
+ShippedOrderState -left-> PaidOrderState : prev()
+DeliveredOrderState -left-> ShippedOrderState : prev()
+
+@enduml

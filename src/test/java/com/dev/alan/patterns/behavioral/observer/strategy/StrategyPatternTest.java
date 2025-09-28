@@ -1,5 +1,7 @@
-package com.dev.alan.patterns.behavioral.strategy;
+package com.dev.alan.patterns.behavioral.observer.strategy;
 
+import com.dev.alan.patterns.behavioral.strategy.PaymentStrategy;
+import com.dev.alan.patterns.behavioral.strategy.ShoppingCart;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
