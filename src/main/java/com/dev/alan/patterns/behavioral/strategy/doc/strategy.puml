@@ -1,0 +1,43 @@
+@startuml
+title Strategy Pattern - Pagamentos
+
+interface PaymentStrategy {
+    + pay(amount: double)
+}
+
+class CreditCardPayment implements PaymentStrategy {
+    - cardNumber: String
+    + pay(amount: double)
+}
+
+class PayPalPayment implements PaymentStrategy {
+    - email: String
+    + pay(amount: double)
+}
+
+class PixPayment implements PaymentStrategy {
+    - pixKey: String
+    + pay(amount: double)
+}
+
+class ShoppingCart {
+    - paymentStrategy: PaymentStrategy
+    + setPaymentStrategy(strategy: PaymentStrategy)
+    + checkout(amount: double)
+}
+
+class Application {
+    + main(args: String[])
+}
+
+PaymentStrategy <|.. CreditCardPayment
+PaymentStrategy <|.. PayPalPayment
+PaymentStrategy <|.. PixPayment
+
+ShoppingCart --> PaymentStrategy : usa
+
+Application --> ShoppingCart
+Application --> CreditCardPayment
+Application --> PayPalPayment
+Application --> PixPayment
+@enduml
