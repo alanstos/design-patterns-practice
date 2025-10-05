@@ -23,4 +23,4 @@ Estrutura
 
 ### Exemplo
 Esse exemplo fica bem mais prático: um e-commerce que precisa de várias regras de negócio sobre produtos.
-Se amanhã precisar de um DescontoVisitor, você cria a classe sem mexer em Livro, Eletronico, Comida.
+Se amanhã precisar de um `DescontoVisitor`, você cria a classe sem mexer em `Livro`, `Eletronico`, `Comida`.

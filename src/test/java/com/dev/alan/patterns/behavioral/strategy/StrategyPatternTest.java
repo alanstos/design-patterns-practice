@@ -1,4 +1,4 @@
-package com.dev.alan.patterns.behavioral.observer.strategy;
+package com.dev.alan.patterns.behavioral.strategy;
 
 import com.dev.alan.patterns.behavioral.strategy.PaymentStrategy;
 import com.dev.alan.patterns.behavioral.strategy.ShoppingCart;
