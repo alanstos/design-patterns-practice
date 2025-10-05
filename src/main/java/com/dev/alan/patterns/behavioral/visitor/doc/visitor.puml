@@ -1,0 +1,49 @@
+@startuml
+title Visitor Pattern - Document Example
+
+interface DocumentElement {
+    + accept(visitor: Visitor)
+}
+
+class TextElement {
+    - text: String
+    + getText(): String
+    + accept(visitor: Visitor)
+}
+
+class ImageElement {
+    - path: String
+    + getPath(): String
+    + accept(visitor: Visitor)
+}
+
+interface Visitor {
+    + visit(textElement: TextElement)
+    + visit(imageElement: ImageElement)
+}
+
+class RenderVisitor {
+    + visit(textElement: TextElement)
+    + visit(imageElement: ImageElement)
+}
+
+class ExportVisitor {
+    + visit(textElement: TextElement)
+    + visit(imageElement: ImageElement)
+}
+
+class Application {
+    + main(args: String[])
+}
+
+DocumentElement <|.. TextElement
+DocumentElement <|.. ImageElement
+
+Visitor <|.. RenderVisitor
+Visitor <|.. ExportVisitor
+
+TextElement --> Visitor : accept()
+ImageElement --> Visitor : accept()
+
+Application --> DocumentElement
+@enduml

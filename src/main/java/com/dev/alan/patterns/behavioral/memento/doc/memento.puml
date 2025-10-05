@@ -1,0 +1,31 @@
+@startuml
+title Memento Pattern - Editor de Texto
+
+class EditorMemento {
+    - content: String
+    + getContent(): String
+}
+
+class TextEditor {
+    - content: String
+    + type(words: String)
+    + getContent(): String
+    + save(): EditorMemento
+    + restore(memento: EditorMemento)
+}
+
+class History {
+    - history: Stack<EditorMemento>
+    + save(memento: EditorMemento)
+    + undo(): EditorMemento
+}
+
+class Application {
+    + main(args: String[])
+}
+
+TextEditor --> EditorMemento : cria/usa
+History --> EditorMemento : armazena
+Application --> TextEditor
+Application --> History
+@enduml
